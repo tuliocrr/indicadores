@@ -32,4 +32,38 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	
+	public $title_for_layout = "Civis Estratégia";
+	
+	public $components = array(
+		'Session',
+		'Paginator',
+		'Auth' => array(
+			'loginAction' => array(
+				'controller' => 'autenticacao',
+				'action' => 'index'
+			),
+			'authError' => 'Você precisa estar logado para acessar a página.',
+			'loginRedirect' => array('controller'=>'principal', 'action'=>'index'),
+			'logoutRedirect' => array('controller'=>'autenticacao', 'action'=>'index'),
+			'authenticate' => array(
+				'Form' => array(
+					'fields' => array('username' => 'login', 'password' => 'senha'),
+					'userModel' => 'Usuario',
+					'scope' => array('Usuario.status' => 1)
+				)
+			)
+		)
+	);
+	
+	public function beforeFilter(){
+		AuthComponent::$sessionKey = "Auth.Indicadores";
+		Security::setHash('md5');
+	}
+	
+	public function beforeRender(){
+		$this->set("title_for_layout", $this->title_for_layout);
+		$this->set('usuarioLogado', $this->Auth->user());
+	}
+	
 }

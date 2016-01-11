@@ -542,7 +542,6 @@ class AuthComponent extends Component {
  */
 	public function login($user = null) {
 		$this->_setDefaults();
-
 		if (empty($user)) {
 			$user = $this->identify($this->request, $this->response);
 		}
@@ -604,6 +603,7 @@ class AuthComponent extends Component {
 		if ($key === null) {
 			return $user;
 		}
+		
 		return Hash::get($user, $key);
 	}
 

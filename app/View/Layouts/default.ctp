@@ -15,7 +15,7 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta charset="uft-8">
-		<title>Civis Estratégia</title>
+		<title><?php echo $title_for_layout;?></title>
 		<?php
 			echo $this->Html->meta('icon');
 			echo $this->fetch('meta');

@@ -7,7 +7,18 @@ class AutenticacaoController extends AppController{
 	}
 	
 	public function index(){
-		
+		if($this->request->is('post')){
+			if($this->Auth->login()){
+				$this->redirect($this->Auth->loginRedirect);
+			}else{
+				$this->Session->setFlash('Login e/ou Senha inválidos', 'danger');
+			}
+		}
+	}
+	
+	public function logout(){
+		$this->Auth->logout();
+		$this->redirect($this->Auth->logoutRedirect);
 	}
 	
 }

@@ -23,17 +23,6 @@
 				array(
 					'bootstrap.min',
 					'bootstrap-responsive.min',
-					'cake.generic',
-					'footable.core',
-					'jquery-ui.min',
-					'plugins/treetable/stylesheets/jquery.treetable.theme.default.css',
-					'plugins/treetable/stylesheets/jquery.treetable.css',
-					'plugins/lwMultiSelect/jquery.lwMultiSelect.css',
-					'dhtmlxgantt',
-					'slickmap',
-					'gantt',
-					'core',
-					'font-awesome',
 					'main'
 				)
 			);
@@ -65,26 +54,11 @@
 			</footer><!-- /.rodape -->
 		</div><!-- #wrapper -->
 		<!-- Scripts -->
-		<?php echo $this->Html->script(array('libs/jquery','libs/footable','libs/jquery-ui.min','plugins/treetable/javascripts/src/jquery.treetable.js'));?>
+		<?php echo $this->Html->script(array('libs/jquery'));?>
 		<?php 
-		echo $this->Html->script(
-			array(
-				'libs/jquery.maskedinput',
-				'libs/jquery.maskMoney',
-				'libs/bootstrap.min',
-				'libs/geral',
-				'libs/jquery.ui.datepicker'
-			)
-		);
-		echo $this->fetch('script');
-		echo $this->Js->writeBuffer(); // note: write cached scripts 
+			echo $this->fetch('script');
+			echo $this->Js->writeBuffer(); // note: write cached scripts 
 		?>
-		<script>
-			$(function() {
-				$.datepicker.setDefaults( $.datepicker.regional[""] );
-				$(".datepicker").datepicker( $.datepicker.regional["pt-BR"] );
-			});
-		</script>
 		<!-- end Scripts -->
 	</body>
 </html>
