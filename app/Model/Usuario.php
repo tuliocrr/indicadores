@@ -9,16 +9,7 @@
  * Acesse o Portal do Software Público Brasileiro no endereço www.softwarepublico.gov.br ou escreva para a Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
  *
  */
-/**
- * Usuario Model
- *
- * @property Pessoa $Pessoa
- * @property Cargo $Cargo
- * @property Vinculo $Vinculo
- */
 class Usuario extends AppModel {
-	
-	var $useTable = "usuario";
 
 	/**
 	 * Validation rules

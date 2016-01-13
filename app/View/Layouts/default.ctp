@@ -45,7 +45,7 @@
 			<header id="header" class="clearfix">
 		    	<div id="header-content" class="container clearfix">
 		    		<span class="header-logo">
-		    			<a href="<?php echo $this->base;?>/Aplicacao" class="header-logo-a" title="Civis Estratégia">
+		    			<a href="<?php echo $this->base;?>" class="header-logo-a" title="Civis Estratégia">
 		    				<img src="<?php echo $this->base;?>/img/logo-civis-estrategia.png" alt="Civis Estratégia">
 		    				<span class="visuallyhidden">Civis Estratégia</span>
 		    			</a>
@@ -53,13 +53,13 @@
 		    		<div class="topo-usuario clearfix">
 		    			<p class="topo-usuario-login">
 		    				<em class="descricao">Departamento:</em>
-		    				<strong class="titulo cor-destaque login-titulo"><?php echo "Departamento";?></strong>
+		    				<strong class="titulo cor-destaque login-titulo"><?php echo $usuarioLogado["Departamento"]["titulo"];?></strong>
 		    			</p>
 		    			<div class="topo-usuario-bloco clearfix">
 		    				<img src="" alt="" height="56"/>
 		    				<div class="texto">
-		    					<strong class="nome">Fulano da Silva</strong>
-								<br />Grupo
+		    					<strong class="nome"><?php echo $usuarioLogado["Pessoa"]["nome"]?></strong>
+								<br /><?php echo $usuarioLogado["Perfil"]["titulo"]?>
 		    					<div class="links">
 		    						<?php echo $this->Html->link("Alterar Dados", array("controller"=>"usuario","action"=>"alterardados"));?>	
 		    						<span class="separador"> | </span>
@@ -82,7 +82,7 @@
 						<div class="nav-collapse collapse" style="height: 0px;">
 				        	<ul class="nav">
 				          		<li class="">
-				            		<a href="<?php echo $this->base;?>/Aplicacao">Home</a>
+				            		<a href="<?php echo $this->base;?>">Home</a>
 				          		</li>
 				          		<li class="dropdown">
 					          		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -102,7 +102,7 @@
 						    		<ul class="dropdown-menu">
 								    	<li><?php echo $this->Html->link(__('Usuários'), array('controller' => 'Usuario','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Empresas'), array('controller' => 'Empresa','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Grupos'), array('controller' => 'Grupo','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Perfis'), array('controller' => 'perfis','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Cargos'), array('controller' => 'Cargo','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Vinculos'), array('controller' => 'Vinculo','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Setores'), array('controller' => 'Setor','action' => 'index'));?></li>

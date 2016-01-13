@@ -9,27 +9,8 @@
  * Acesse o Portal do Software Público Brasileiro no endereço www.softwarepublico.gov.br ou escreva para a Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
  *
  */
-
-App::uses('Model', 'Model');
-
-/**
- * Application model for Cake.
- *
- * Add your application-wide methods in the class below, your models
- * will inherit them.
- *
- * @package       app.Model
- */
-class AppModel extends Model {
+class Permissao extends AppModel{
 	
-	/**
-	 * Adiciona sempre a condição excluído = false para todas as consultas
-	 * (non-PHPdoc)
-	 * @see Model::beforeFind()
-	 */
-	public function beforeFind($queryData) {
-		$queryData["conditions"][$this->name . ".status = "] = 1;
-		return $queryData;
-	}
-	
+	var $useTable = "permissoes";
+		
 }
