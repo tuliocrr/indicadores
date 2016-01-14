@@ -31,6 +31,13 @@ class ControleDeAcesso{
 			'Editar'=>array('Usuarios.editar.action', 'Usuarios.editar.element'),
 			'Listagem'=>array('Usuarios.index.action', 'Usuarios.listar.element'),
 			'Visualizar'=>array('Usuarios.visualizar.action', 'Usuarios.visualizar.element')
+		),
+		'Cargo'=>array(
+			'Adicionar'=>array('Cargos.adicionar.action','Cargos.adicionar.element'),
+			'Excluir'=>array('Cargos.excluir.action', 'Cargos.excluir.element'),
+			'Editar'=>array('Cargos.editar.action', 'Cargos.editar.element'),
+			'Listagem'=>array('Cargos.index.action', 'Cargos.listar.element'),
+			'Visualizar'=>array('Cargos.visualizar.action', 'Cargos.visualizar.element')
 		)
 	);
 

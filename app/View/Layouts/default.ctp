@@ -89,10 +89,10 @@
 						          		Comunicação<b class="caret"></b>
 							  		</a>
 								  	<ul class="dropdown-menu">
-										<li><?php echo $this->Html->link(__('Reuniões'), array('controller' => 'Reuniao','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Tarefas'), array('controller' => 'Tarefa','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Marcadores'), array('controller' => 'Marcador','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Procedimentos'), array('controller' => 'Procedimento','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Reuniões'), array('controller' => 'reunioes','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Tarefas'), array('controller' => 'tarefas','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Marcadores'), array('controller' => 'marcadores','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Procedimentos'), array('controller' => 'procedimentos','action' => 'index'));?></li>
 								  	</ul>
 				          		</li>
 						  		<li class="dropdown">
@@ -100,13 +100,12 @@
 				            		Cadastros<b class="caret"></b>
 						    		</a>
 						    		<ul class="dropdown-menu">
-								    	<li><?php echo $this->Html->link(__('Usuários'), array('controller' => 'Usuario','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Empresas'), array('controller' => 'Empresa','action' => 'index'));?></li>
+								    	<li><?php echo $this->Html->link(__('Usuários'), array('controller' => 'usuarios','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Perfis'), array('controller' => 'perfis','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Cargos'), array('controller' => 'Cargo','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Vinculos'), array('controller' => 'Vinculo','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Setores'), array('controller' => 'Setor','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Departamentos'), array('controller' => 'Departamento','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Cargos'), array('controller' => 'cargos','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Vinculos'), array('controller' => 'vinculos','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Setores'), array('controller' => 'setores','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Departamentos'), array('controller' => 'departamentos','action' => 'index'));?></li>
 						    		</ul>
 				          		</li>
 				          		<li class="dropdown">
@@ -114,15 +113,15 @@
 				            			Gestão Estratégica<b class="caret"></b>
 						    		</a>
 						    		<ul class="dropdown-menu">
-						     			<li><?php echo $this->Html->link(__('Dimensões'), array('controller' => 'dimensao','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Objetivos'), array('controller' => 'objetivo','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Indicadores'), array('controller' => 'indicador','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Ações Estratégicas'), array('controller' => 'AcaoEstrategica','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Revisão das Ações'), array('controller' => 'AcaoEstrategica','action' => 'indice_revisao'));?></li>
-							  			<li><?php echo $this->Html->link(__('Painel Geral de Ações'), array('controller' => 'AcaoEstrategica','action' => 'painel_acoes'));?></li>
-						      			<li><?php echo $this->Html->link(__('Atividades'), array('controller' => 'atividade','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Faixas'), array('controller' => 'faixa','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Anomalia'), array('controller' => 'anomalia','action' => 'index'));?></li>
+						     			<li><?php echo $this->Html->link(__('Dimensões'), array('controller' => 'dimensoes','action' => 'index'));?></li>
+						      			<li><?php echo $this->Html->link(__('Objetivos'), array('controller' => 'objetivos','action' => 'index'));?></li>
+							  			<li><?php echo $this->Html->link(__('Indicadores'), array('controller' => 'indicadores','action' => 'index'));?></li>
+							  			<li><?php echo $this->Html->link(__('Ações Estratégicas'), array('controller' => 'acoes-estrategicas','action' => 'index'));?></li>
+							  			<li><?php echo $this->Html->link(__('Revisão das Ações'), array('controller' => 'acoes-estrategicas','action' => 'indice_revisao'));?></li>
+							  			<li><?php echo $this->Html->link(__('Painel Geral de Ações'), array('controller' => 'acoes-estrategicas','action' => 'painel_acoes'));?></li>
+						      			<li><?php echo $this->Html->link(__('Atividades'), array('controller' => 'atividades','action' => 'index'));?></li>
+						      			<li><?php echo $this->Html->link(__('Faixas'), array('controller' => 'faixas','action' => 'index'));?></li>
+						      			<li><?php echo $this->Html->link(__('Anomalias'), array('controller' => 'anomalias','action' => 'index'));?></li>
 						    		</ul>
 				          		</li>
 								<li class="dropdown">
@@ -130,12 +129,12 @@
 				            			Gestão de Portfólio<b class="caret"></b>
 						    		</a>			
 						    		<ul class="dropdown-menu">
-										<li><?php echo $this->Html->link(__('Projetos'), array('controller' => 'Projeto','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Programas'), array('controller' => 'Programa','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Projetos'), array('controller' => 'projetos','action' => 'index'));?></li>
+										<li><?php echo $this->Html->link(__('Programas'), array('controller' => 'programas','action' => 'index'));?></li>
 									</ul>
 						  		</li>
-								<li><?php echo $this->Html->link(__('Mapa estratégico'), array('controller' => 'MapaEstrategico','action' => 'index'));?></li>
-				          		<li><?php echo $this->Html->link(__('Organograma'), array('controller' => 'Organograma','action' => 'index'));?></li>
+								<li><?php echo $this->Html->link(__('Mapa estratégico'), array('controller' => 'mapa-estrategico','action' => 'index'));?></li>
+				          		<li><?php echo $this->Html->link(__('Organograma'), array('controller' => 'organograma','action' => 'index'));?></li>
 				        	</ul>
 						</div>
 					</div>

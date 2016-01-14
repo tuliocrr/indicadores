@@ -1,7 +1,7 @@
 <?php
 class AutenticacaoController extends AppController{
 	
-	public $uses = array("Usuario", "Pessoa");
+	public $uses = array("Usuario");
 	
 	public function beforeRender(){
 		$this->layout = "login";
@@ -10,7 +10,7 @@ class AutenticacaoController extends AppController{
 	
 	public function index(){
 		if($this->request->is('post')){
-			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa", "Departamento", "Perfil")));
+			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa", "Departamento", "Perfil", "Conta")));
 			if($this->Auth->login()){
 				$this->redirect($this->Auth->loginRedirect);
 			}else{

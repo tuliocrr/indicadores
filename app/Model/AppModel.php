@@ -12,6 +12,8 @@
 
 App::uses('Model', 'Model');
 
+App::uses('CakeSession', 'Model/Datasource');
+
 /**
  * Application model for Cake.
  *
@@ -28,8 +30,15 @@ class AppModel extends Model {
 	 * @see Model::beforeFind()
 	 */
 	public function beforeFind($queryData) {
-		$queryData["conditions"][$this->name . ".status = "] = 1;
+		if(Router::getParam('controller') != 'autenticacao' && $this->name != "Conta"){
+			$queryData["conditions"][$this->name . ".conta_id = "] = CakeSession::read("Auth.Indicadores.Conta.id");
+		}
+		$queryData["conditions"][$this->name . ".status != "] = 0;
 		return $queryData;
+	}
+	
+	public function beforeSave($options = array()){
+		$this->data[$this->name]["conta_id"] = CakeSession::read("Auth.Indicadores.Conta.id");
 	}
 	
 }

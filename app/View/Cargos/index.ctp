@@ -26,6 +26,7 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 			<thead>
 				<tr>
 					<th><?php echo $this->Paginator->sort('titulo', 'Título'); ?></th>
+					<th><?php echo $this->Paginator->sort('descricao', 'Descrição'); ?></th>
 					<?php if($editar || $excluir){?>
 					<th class="text-center"><?php echo __('Ações'); ?></th>
 					<?php }?>
@@ -36,18 +37,19 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 				<tr>
 					<td><?php 
 					if($visualizar){
-						echo $this->Html->link($linha['Perfil']['titulo'], array('action' => 'visualizar', $linha['Perfil']['id'])); 
+						echo $this->Html->link($linha['Cargo']['titulo'], array('action' => 'visualizar', $linha['Cargo']['id'])); 
 					}else{
-						echo $linha['Perfil']['titulo'];
+						echo $linha['Cargo']['titulo'];
 					}
 					?>&nbsp;</td>
+					<td><?php echo $linha["Cargo"]["descricao"]?></td>
 					<?php if($editar || $excluir){?>
 					<td width="7%" nowrap="nowrap" class="text-center">
 						<?php 
 							if($editar){
 							echo $this->Html->link(
 								__(""),
-								array('action' => 'editar', $linha['Perfil']['id']),
+								array('action' => 'editar', $linha['Cargo']['id']),
 								array('class'=>'icon-edit')
 							);
 							echo "&nbsp;&nbsp;";
@@ -55,9 +57,9 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 							if($excluir){
 							echo $this->Form->postLink(
 								__(""), 
-								array('action' => 'excluir', $linha['Perfil']['id']), 
+								array('action' => 'excluir', $linha['Cargo']['id']), 
 								array('class'=>'icon-trash'),
-								__('Deseja realmente excluir o registro?', $linha['Perfil']['id'])
+								__('Deseja realmente excluir o registro?', $linha['Cargo']['id'])
 							);
 							}
 						?>
