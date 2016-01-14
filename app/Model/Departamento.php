@@ -14,18 +14,12 @@ class Departamento extends AppModel{
 	);
 	
 	public function adicionar($dados){
-		if ($this->save($dados)) {
-				return true;
-		}
-		throw new Exception("Erro ao salvar registro");
+		return $this->save($dados);
 	}
 	
 	public function editar($id, $dados){
 		$this->id = $id;
-		if ($this->save($dados)) {
-				return true;
-		}
-		throw new Exception("Erro ao salvar registro");
+		return $this->save($dados);
 	}
 
 	public function excluir($id){
