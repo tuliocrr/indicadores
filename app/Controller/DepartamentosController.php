@@ -1,5 +1,5 @@
 <?php
-class CargosController extends AppController{
+class DepartamentosController extends AppController{
 	
 	public $uses = array("Cargo");
 	

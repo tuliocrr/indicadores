@@ -1,6 +1,6 @@
 <?php
 App::uses("Usuario", "Model");
-class Cargo extends AppModel{
+class Departamento extends AppModel{
 	
 	var $useTable = "departamentos";
 	
