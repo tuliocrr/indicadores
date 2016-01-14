@@ -58,10 +58,10 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Postgres',
 		'persistent' => false,
-		'host' => 'localhost',
+		'host' => '127.0.0.1',
 		'login' => 'postgres',
 		'password' => 'postgres',
-		'database' => 'civisindicadores',
+		'database' => 'indicadores',
 		'prefix' => '',
 		'encoding' => 'utf8',
 	);
