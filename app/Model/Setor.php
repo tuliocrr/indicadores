@@ -1,11 +1,16 @@
 <?php
 App::uses("Usuario", "Model");
-class Cargo extends AppModel{
+class Setor extends AppModel{
 	
-	var $useTable = "cargos";
+	var $useTable = "setores";
 	
 	public $validate = array(
 		"titulo"=>array(
+			"Obrigatório"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Campo obrigatório"
+			)
+		),"tipo_setor_id"=>array(
 			"Obrigatório"=>array(
 				"rule"=>"notEmpty",
 				"message"=>"Campo obrigatório"
@@ -29,8 +34,8 @@ class Cargo extends AppModel{
 		}
 		
 		$Usuario = new Usuario();
-		if($usuarios = $Usuario->find("all", array("conditions"=>array("Usuario.cargo_id"=>$id, "Usuario.status"=>1)))){
-			throw new Exception("Este cargo não pode ser excluído pois existem usuários associados ao mesmo");
+		if($usuarios = $Usuario->find("all", array("conditions"=>array("Usuario.setor_id"=>$id, "Usuario.status"=>1)))){
+			throw new Exception("Este setor não pode ser excluído pois existem usuários associados ao mesmo");
 		}
 			
 		$this->id = $id;

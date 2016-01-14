@@ -43,7 +43,7 @@ class Perfil extends AppModel{
 			}
 			throw new Exception("Nenhum dado de permissão foi enviado");
 		}
-		throw new Exception("Erro ao salvar perfil");
+		return false;
 	}
 	
 	public function editar($id, $dados, $CDA){
@@ -83,7 +83,7 @@ class Perfil extends AppModel{
 			}
 			throw new Exception("Nenhum dado de permissão foi enviado");
 		}
-		throw new Exception("Erro ao salvar perfil");
+		return false;
 	}
 
 	public function excluir($id){
