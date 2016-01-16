@@ -38,6 +38,27 @@ class ControleDeAcesso{
 			'Editar'=>array('Cargos.editar.action', 'Cargos.editar.element'),
 			'Listagem'=>array('Cargos.index.action', 'Cargos.listar.element'),
 			'Visualizar'=>array('Cargos.visualizar.action', 'Cargos.visualizar.element')
+		),
+		'Departamento'=>array(
+			'Adicionar'=>array('Departamentos.adicionar.action','Departamentos.adicionar.element'),
+			'Excluir'=>array('Departamentos.excluir.action', 'Departamentos.excluir.element'),
+			'Editar'=>array('Departamentos.editar.action', 'Departamentos.editar.element'),
+			'Listagem'=>array('Departamentos.index.action', 'Departamentos.listar.element'),
+			'Visualizar'=>array('Departamentos.visualizar.action', 'Departamentos.visualizar.element')
+		),
+		'Faixa'=>array(
+			'Adicionar'=>array('Faixas.adicionar.action','Faixas.adicionar.element'),
+			'Excluir'=>array('Faixas.excluir.action', 'Faixas.excluir.element'),
+			'Editar'=>array('Faixas.editar.action', 'Faixas.editar.element'),
+			'Listagem'=>array('Faixas.index.action', 'Faixas.listar.element'),
+			'Visualizar'=>array('Faixas.visualizar.action', 'Faixas.visualizar.element')
+		),
+		'Vinculo'=>array(
+			'Adicionar'=>array('Vinculos.adicionar.action','Vinculos.adicionar.element'),
+			'Excluir'=>array('Vinculos.excluir.action', 'Vinculos.excluir.element'),
+			'Editar'=>array('Vinculos.editar.action', 'Vinculos.editar.element'),
+			'Listagem'=>array('Vinculos.index.action', 'Vinculos.listar.element'),
+			'Visualizar'=>array('Vinculos.visualizar.action', 'Vinculos.visualizar.element')
 		)
 	);
 
