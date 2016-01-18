@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  *
  * Copyright [2016] -  Civis Gestão Inteligente
@@ -9,45 +9,30 @@
  * Acesse o Portal do Software Público Brasileiro no endereço www.softwarepublico.gov.br ou escreva para a Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
  *
  */
-App::uses("Usuario", "Model");
-class Cargo extends AppModel{
+?>
+<div class="container">
 	
-	var $useTable = "cargos";
+	<h4><?php echo $title;?></h4>
 	
-	public $validate = array(
-		"titulo"=>array(
-			"Obrigatório"=>array(
-				"rule"=>"notEmpty",
-				"message"=>"Campo obrigatório"
-			)
-		)
-	);
+	<form method="post">
 	
-	public function adicionar($dados){
-		return $this->save($dados);
-	}
-	
-	public function editar($id, $dados){
-		$this->id = $id;
-		return $this->save($dados);
-	}
-
-	public function excluir($id){
+ 		<div class="row">
+ 			<div class="span12"> 
+				<?php
+					echo $this->Form->input('Vinculo.id');
+					echo $this->Form->input('Vinculo.titulo', array('label'=>'Título','class'=>'input-xlarge', 'div'=>array('class'=>false)));
+				?>
+			</div>
 		
-		if(!$registro = $this->findById($id)){
-			throw new Exception("Registro #{$id} não encontrado");
-		}
-		
-		$Usuario = new Usuario();
-		if($usuarios = $Usuario->find("all", array("conditions"=>array("Usuario.cargo_id"=>$id, "Usuario.status"=>1)))){
-			throw new Exception("Este cargo não pode ser excluído pois existem usuários associados ao mesmo");
-		}
-			
-		$this->id = $id;
-		if($this->saveField("status", 0)) 
-			return true;
-		return false;
-		
-	}
-
-}
+ 		</div>
+ 		
+		 <div class="row">
+		 	<div class="span12">
+		 		<div class="form-actions">
+		  			<button type="submit" class="btn btn-primary">Salvar</button>
+				</div>
+		 	</div>
+		 </div>
+		 
+	</form>
+</div>
