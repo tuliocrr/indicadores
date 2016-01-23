@@ -59,6 +59,20 @@ class ControleDeAcesso{
 			'Editar'=>array('Vinculos.editar.action', 'Vinculos.editar.element'),
 			'Listagem'=>array('Vinculos.index.action', 'Vinculos.listar.element'),
 			'Visualizar'=>array('Vinculos.visualizar.action', 'Vinculos.visualizar.element')
+		),
+		'Dimensão'=>array(
+			'Adicionar'=>array('Dimensoes.adicionar.action','Dimensoes.adicionar.element'),
+			'Excluir'=>array('Dimensoes.excluir.action', 'Dimensoes.excluir.element'),
+			'Editar'=>array('Dimensoes.editar.action', 'Dimensoes.editar.element'),
+			'Listagem'=>array('Dimensoes.index.action', 'Dimensoes.listar.element'),
+			'Visualizar'=>array('Dimensoes.visualizar.action', 'Dimensoes.visualizar.element')
+		),
+		'Procedimentos'=>array(
+			'Adicionar'=>array('Procedimentos.adicionar.action','Procedimentos.adicionar.element'),
+			'Excluir'=>array('Procedimentos.excluir.action', 'Procedimentos.excluir.element'),
+			'Editar'=>array('Procedimentos.editar.action', 'Procedimentos.editar.element'),
+			'Listagem'=>array('Procedimentos.index.action', 'Procedimentos.listar.element'),
+			'Visualizar'=>array('Procedimentos.visualizar.action', 'Procedimentos.visualizar.element')
 		)
 	);
 
