@@ -50,5 +50,13 @@ class Departamento extends AppModel{
 		
 	}
 
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Departamento.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Departamento.id', 'Departamento.titulo');
+		}
+		return $this->find($type, $options);
+	}
+	
 }
 ?>

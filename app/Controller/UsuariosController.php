@@ -11,49 +11,125 @@
  */
 class UsuariosController extends AppController{
 	
+	public $uses = array("Usuario", "Pessoa", "Perfil", "Cargo", "Vinculo", "Setor", "Departamento");
+	
 	public function index(){
 		try{
 			
 			$this->setTitle("Usuários");
-			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa","Perfil","Vinculo")));			
+			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa","Perfil","Vinculo")));
 			$this->paginate['conditions'] = $this->_conditions();
-			$this->paginate['order'] = array('Usuario.nome'=>'asc');
+			$this->paginate['order'] = array('Pessoa.nome'=>'asc');
 			$this->set('lista', $this->paginate());
-			$this->set('options', array('Usuario.nome'=>'Nome'));
+			$this->set('options', array('Pessoa.nome'=>'Nome', 'Usuario.login'=>'Login', 'Perfil.titulo'=>'Perfil', 'Vinculo.titulo'=>'Vínculo'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e);
 		}
 	}
 	
-	public function editar(){
+	public function adicionar(){
+		try{
+			
+			$this->setTitle("Adicionar usuário");
+			
+			if($this->request->is('post')){
+				
+				$this->Pessoa->set($this->request->data["Pessoa"]);
+				$this->Usuario->set($this->request->data["Usuario"]);
+				
+				if($this->Pessoa->validates() && $this->Usuario->validates()){
+				
+					$DS = $this->Pessoa->getDataSource();
+	
+					if($this->Pessoa->save($this->request->data)){
+						$this->request->data["Usuario"]["pessoa_id"] = $this->Pessoa->id;
+						if($this->Usuario->save($this->request->data)){
+							$DS->commit();
+							$this->Session->setFlash("Registro adicionado com sucesso", "success");
+							$this->redirect(array("action"=>"adicionar"));
+						}else{
+							$this->Session->setFlash("Erro ao tentar salvar registro", "danger");
+							$DS->rollback();
+						}
+					}else{
+						$this->Session->setFlash("Erro ao tentar salvar registro", "danger");
+						$DS->rollback();
+					}
+				
+				}else{
+					$this->Session->setFlash("Seu formulário possui pendências de validação", "danger");
+				}
+				
+			}
+			
+			$this->set('perfis', $this->Perfil->listarAtivos('list'));
+			$this->set('cargos', $this->Cargo->listarAtivos('list'));
+			$this->set('vinculos', $this->Vinculo->listarAtivos('list'));
+			$this->set('setores', $this->Setor->listarAtivos('list'));
+			$this->set('departamentos', $this->Departamento->listarAtivos('list'));
+			
+		}catch(Exception $e){
+			if(isset($DS)){$DS->rollback();}
+			$this->trataExcecao($e);
+		}
+	}
+	
+	public function editar($id){
 		
 		try{
 			
-			if(!$registro = $this->Usuarios->findById($id)){
+			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa")));
+			if(!$registro = $this->Usuario->findById($id)){
 				throw new Exception("Registro #{$id} não encontrado");
 			}
 			
-			$this->setTitle("Editar Usuário");
-			if ($this->request->is('post')) {
-				$DS = $this->Usuario->getDataSource();
-				$DS->begin();
-				if($this->Usuario->editar($id, $this->request->data)){
-					$DS->commit();
-					$this->Session->setFlash("Registro editado com sucesso", "success");
-					$this->redirect(array("action"=>"index"));
+			$this->setTitle("Editar usuário");
+			
+			if($this->request->is('post')){
+
+				$this->Pessoa->set($this->request->data["Pessoa"]);
+				$this->Usuario->set($this->request->data["Usuario"]);
+				
+				if($this->Pessoa->validates() && $this->Usuario->validates()){
+					
+					$DS = $this->Pessoa->getDataSource();
+				
+					$this->Pessoa->id = $this->request->data["Pessoa"]["id"];
+					if($this->Pessoa->save($this->request->data)){ 
+						$this->Usuario->id = $this->request->data["Usuario"]["id"];
+						if($this->Usuario->save($this->request->data)){
+							$DS->commit();
+							$this->Session->setFlash("Registro editado com sucesso", "success");
+							$this->redirect(array("action"=>"index"));
+						}else{
+							$this->Session->setFlash("Erro ao tentar salvar registro", "danger");
+							$DS->rollback();
+						}
+					}else{
+						$this->Session->setFlash("Erro ao tentar salvar registro", "danger");
+						$DS->rollback();
+					}
+				
 				}else{
-					$DS->rollback();
+					$this->Session->setFlash("Seu formulário possui pendências de validação", "danger");
 				}
+				
+			}else{
+				$this->request->data = $registro;
+				unset($this->request->data['Usuario']['senha']);
 			}
 			
-			$this->request->data = $registro;
-			
-			$this->set("perfis", $this->Perfil->listarAtivos("list"));
-			$this->set("vinculos", $this->Vinculo->listarAtivos("list"));
+			$this->set('perfis', $this->Perfil->listarAtivos('list'));
+			$this->set('cargos', $this->Cargo->listarAtivos('list'));
+			$this->set('vinculos', $this->Vinculo->listarAtivos('list'));
+			$this->set('setores', $this->Setor->listarAtivos('list'));
+			$this->set('departamentos', $this->Departamento->listarAtivos('list'));
 			
 		}catch(Exception $e){
-			$this->trataExcecao($e, $DS);
+			if(isset($DS)){$DS->rollback();}
+			$this->trataExcecao($e);
 		}
+		
 	}				
 }

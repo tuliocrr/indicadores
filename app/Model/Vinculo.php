@@ -40,5 +40,13 @@ class Vinculo extends AppModel{
 		
 	}
 
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Vinculo.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Vinculo.id', 'Vinculo.titulo');
+		}
+		return $this->find($type, $options);
+	}
+	
 }
 ?>

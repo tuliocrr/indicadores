@@ -34,11 +34,13 @@ class Usuario extends AppModel {
 		'senha'=>array(
 			'Obrigatório'=>array(
 				'rule'=>'notEmpty',
-				'message'=>'Campo senha é obrigatório'
+				'message'=>'Campo senha é obrigatório',
+				'on'=>'create'
 			),
 			'Tamanho Mínimo'=>array(
 				'rule' => array('minLength', 6),
-				'message'=>'Senha deve ter no mínimo 6 caracteres'
+				'message'=>'Senha deve ter no mínimo 6 caracteres',
+				'allowEmpty'=>true
 			),
 			'Match Passwords'=>array(
 				'rule'=>'matchPasswords',
@@ -48,10 +50,11 @@ class Usuario extends AppModel {
 		"confirmacao_senha"=>array(
 			"Obrigatório"=>array(
 				"rule"=>"notEmpty",
-				"message"=>"Confirme sua senha"
+				"message"=>"Confirme sua senha",
+				"on"=>"create"
 			)
 		),
-		'grupo_id' => array(
+		'perfil_id' => array(
 			'Obrigatório' => array(
 				'rule' => array('notempty'),
 				'message' => 'Campo Grupo é obrigatório',
@@ -84,17 +87,35 @@ class Usuario extends AppModel {
 	);
 	
 	public function isUnicoLoginAtivo($data){
-		return true;
+		if($this->id){
+			$conditions["Usuario.id != "] = $this->id;
+		}
+		$conditions["Usuario.login"] = strtolower($data["login"]);
+		return !(boolean) $this->find("first", array("conditions"=>$conditions));
 	}
 	
 	public function matchPasswords($data){
-		if(Router::getParam('action') == 'adicionar'){
-			if($data['senha'] != $this->data['Usuario']['confirmacao_senha']){
-				$this->invalidate('confirmacao_senha','Confirmação de senha inválida');
-				return false;
-			}
+		if($data['senha'] != $this->data['Usuario']['confirmacao_senha']){
+			$this->invalidate('confirmacao_senha','Confirmação de senha inválida');
+			return false;
 		}
 		return true;
 	}
 	
+	public function beforeSave($options = array()){
+		
+		// APLICANDO O HASH DA SENHA
+		if(!empty($this->data['Usuario']['senha'])){
+			$this->data['Usuario']['senha'] = AuthComponent::password($this->data['Usuario']['senha']);
+		}else{
+			unset($this->data['Usuario']['senha']);
+		}
+		
+		// COLOCANDO O LOGIN SEMPRE MINUSCULO
+		if(!empty($this->data['Usuario']['login'])){
+			$this->data['Usuario']['login'] = strtolower($this->data['Usuario']['login']);
+		}
+		
+		parent::beforeSave($options); 
+	}
 }

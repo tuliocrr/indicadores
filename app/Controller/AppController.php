@@ -81,6 +81,8 @@ class AppController extends Controller {
 	
 	protected function trataExcecao($e, $DS = null){
 		if(isset($DS)){$DS->rollback();}
+		echo "<pre>";
+		die($e->getMessage());
 		$this->Session->setFlash($e->getMessage(), 'danger');
 		$this->redirect(array("action"=>"index"));
 	}

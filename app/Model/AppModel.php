@@ -30,7 +30,7 @@ class AppModel extends Model {
 	 * @see Model::beforeFind()
 	 */
 	public function beforeFind($queryData) {
-		if(Router::getParam('controller') != 'autenticacao' && $this->name != "Conta"){
+		if(Router::getParam('controller') != 'autenticacao' && $this->name != "Conta" && $this->name != "Pessoa"){
 			$queryData["conditions"][$this->name . ".conta_id = "] = CakeSession::read("Auth.Indicadores.Conta.id");
 		}
 		$queryData["conditions"][$this->name . ".status != "] = 0;

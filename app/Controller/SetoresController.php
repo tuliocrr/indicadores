@@ -21,7 +21,7 @@ class SetoresController extends AppController{
 			$this->paginate['conditions'] = $this->_conditions();
 			$this->paginate['order'] = array('Setor.titulo'=>'asc');
 			$this->set('lista', $this->paginate());
-			$this->set('options', array('Setor.titulo'=>'Título'));
+			$this->set('options', array('Setor.titulo'=>'Título', 'TipoSetor.titulo'=>'Tipo'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e);

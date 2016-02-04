@@ -25,10 +25,10 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 		<table cellpadding="0" cellspacing="0" class="table table-bordered table-hover table-condensed">
 			<thead>
 				<tr>
-					<th><?php echo $this->Paginator->sort('nome', 'Nome'); ?></th>
-					<th><?php echo $this->Paginator->sort('login', 'Login'); ?></th>
-					<th><?php echo $this->Paginator->sort('titulo', 'Perfil'); ?></th>
-					<th><?php echo $this->Paginator->sort('titulo', 'Vínculo'); ?></th>				
+					<th><?php echo $this->Paginator->sort('Pessoa.nome', 'Nome'); ?></th>
+					<th><?php echo $this->Paginator->sort('Usuario.login', 'Login'); ?></th>
+					<th><?php echo $this->Paginator->sort('Perfil.titulo', 'Perfil'); ?></th>
+					<th><?php echo $this->Paginator->sort('Vinculo.titulo', 'Vínculo'); ?></th>				
 					<?php if($editar || $excluir){?>
 					<th class="text-center"><?php echo __('Ações'); ?></th>
 					<?php }?>
@@ -37,7 +37,7 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 			<tbody>
 			<?php foreach($lista as $linha){?>
 				<tr>
-					<td><?php 
+					<td><?php
 					if($visualizar){
 						echo $this->Html->link($linha['Pessoa']['nome'], array('action' => 'visualizar', $linha['Usuario']['id'])); 
 					}else{

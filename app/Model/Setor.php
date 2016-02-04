@@ -45,4 +45,11 @@ class Setor extends AppModel{
 		
 	}
 
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Setor.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Setor.id', 'Setor.titulo');
+		}
+		return $this->find($type, $options);
+	}
 }

@@ -115,8 +115,11 @@ class Perfil extends AppModel{
 		
 	}
 	
-	public function listarAtivos(){
-		
-		return $this->find("all", array("conditions"=>array("Perfil.status"=>1)));
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Perfil.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Perfil.id', 'Perfil.titulo');
+		}
+		return $this->find($type, $options);
 	}
 }

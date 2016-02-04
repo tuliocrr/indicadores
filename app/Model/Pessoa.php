@@ -11,4 +11,23 @@
  */
 class Pessoa extends AppModel{
 	
+	var $useTable = "pessoas";
+	
+	public $validate = array(
+		"nome"=>array(
+			"Obrigatório"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Campo é obrigatório"
+			)
+		),"email"=>array(
+			"Obrigatório"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Campo é obrigatório"
+			),"Email válido"=>array(
+				"rule"=>"email",
+				"message"=>"Email inválido"
+			)
+		)
+	);
+
 }

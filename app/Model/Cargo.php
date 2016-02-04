@@ -50,4 +50,12 @@ class Cargo extends AppModel{
 		
 	}
 
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Cargo.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Cargo.id', 'Cargo.titulo');
+		}
+		return $this->find($type, $options);
+	}
+	
 }

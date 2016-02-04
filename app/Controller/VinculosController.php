@@ -7,7 +7,7 @@ class VinculosController extends AppController{
 		
 		try{
 			
-			$this->setTitle("Vinculos");
+			$this->setTitle("Vínculos");
 			$this->paginate['conditions'] = $this->_conditions();
 			$this->paginate['order'] = array('Vinculo.titulo'=>'asc');
 			$this->set('lista', $this->paginate());
