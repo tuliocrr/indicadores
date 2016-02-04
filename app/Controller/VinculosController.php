@@ -41,7 +41,7 @@ class VinculosController extends AppController{
 		try{
 			
 			if(!$registro = $this->Vinculo->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Vínculo");
@@ -69,7 +69,7 @@ class VinculosController extends AppController{
 			
 			$this->setTitle("Visualizar Vínculo");
 			if(!$registro = $this->Vinculo->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

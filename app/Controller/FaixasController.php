@@ -40,7 +40,7 @@ class FaixasController extends AppController{
 		try{
 			
 			if(!$registro = $this->Faixa->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Faixa");
@@ -68,7 +68,7 @@ class FaixasController extends AppController{
 			
 			$this->setTitle("Visualizar Faixa");
 			if(!$registro = $this->Faixa->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

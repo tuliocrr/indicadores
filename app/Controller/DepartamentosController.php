@@ -41,7 +41,7 @@ class DepartamentosController extends AppController{
 		try{
 			
 			if(!$registro = $this->Departamento->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Departamento");
@@ -69,7 +69,7 @@ class DepartamentosController extends AppController{
 			
 			$this->setTitle("Visualizar Departamento");
 			if(!$registro = $this->Departamento->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

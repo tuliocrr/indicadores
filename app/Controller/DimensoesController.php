@@ -51,7 +51,7 @@ class DimensoesController extends AppController{
 		try{
 			
 			if(!$registro = $this->Dimensao->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Dimensao");
@@ -79,7 +79,7 @@ class DimensoesController extends AppController{
 			
 			$this->setTitle("Visualizar Dimensao");
 			if(!$registro = $this->Dimensao->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

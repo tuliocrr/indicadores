@@ -9,6 +9,7 @@
  * Acesse o Portal do Software Público Brasileiro no endereço www.softwarepublico.gov.br ou escreva para a Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
  *
  */
+app::uses("Pessoa", "Model");
 class Usuario extends AppModel {
 
 	/**
@@ -118,4 +119,62 @@ class Usuario extends AppModel {
 		
 		parent::beforeSave($options); 
 	}
+
+	public function adicionar($dados){
+		$Pessoa = new Pessoa();
+		$Pessoa->set($dados["Pessoa"]);
+		$this->set($dados["Usuario"]);
+		if($Pessoa->validates() && $this->validates()){
+			if($Pessoa->save($dados["Usuario"])){
+				$dados["Usuario"]["pessoa_id"] = $Pessoa->id;
+				if($this->save($dados["Usuario"])){
+					return true;
+				}
+				throw new Exception("Erro ao tentar salvar registro");
+			}
+			throw new Exception("Erro ao tentar salvar registro");
+		}
+		return false;
+	}
+	
+	public function editar($id, $dados){
+		$Pessoa = new Pessoa();
+		$Pessoa->set($dados["Pessoa"]);
+		$this->set($dados["Usuario"]);
+		if($Pessoa->validates() && $this->validates()){
+			$Pessoa->id = $dados["Pessoa"]["id"];
+			if($Pessoa->save($dados["Usuario"])){
+				$this->id = $id;
+				if($this->save($dados["Usuario"])){
+					return true;
+				}
+				throw new Exception("Erro ao tentar salvar registro");
+			}
+			throw new Exception("Erro ao tentar salvar registro");
+		}
+		return false;
+	}
+	
+	public function excluir($id){
+	
+		if(!$registro = $this->findById($id)){
+			throw new RegistroNaoEncontradoException($id);
+		}
+			
+		$this->id = $id;
+		if($this->saveField("status", 0))
+			return true;
+		return false;
+	
+	}
+	
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Pessoa.nome';
+		if($type == 'list'){
+			$options['fields'] = array('Usuario.id', 'Pessoa.nome');
+		}
+		$this->bindModel(array("belongsTo"=>array("Pessoa")));
+		return $this->find($type, $options);
+	}
+
 }

@@ -54,7 +54,7 @@ class SetoresController extends AppController{
 		try{
 			
 			if(!$registro = $this->Setor->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Setor");
@@ -84,7 +84,7 @@ class SetoresController extends AppController{
 			
 			$this->setTitle("Visualizar Setor");
 			if(!$registro = $this->Setor->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

@@ -40,7 +40,7 @@ class CargosController extends AppController{
 		try{
 			
 			if(!$registro = $this->Cargo->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Cargo");
@@ -68,9 +68,8 @@ class CargosController extends AppController{
 			
 			$this->setTitle("Visualizar Cargo");
 			if(!$registro = $this->Cargo->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
-			
 			$this->set("registro", $registro);
 			
 		}catch(Exception $e){

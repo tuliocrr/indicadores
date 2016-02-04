@@ -51,7 +51,7 @@ class ProcedimentosController extends AppController{
 		try{
 			
 			if(!$registro = $this->Procedimento->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Procedimento");
@@ -79,7 +79,7 @@ class ProcedimentosController extends AppController{
 			
 			$this->setTitle("Visualizar Procedimento");
 			if(!$registro = $this->Procedimento->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->set("registro", $registro);

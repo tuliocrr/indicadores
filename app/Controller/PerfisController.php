@@ -42,7 +42,7 @@ class PerfisController extends AppController{
 			
 			$this->Perfil->bindModel(array("hasMany"=>array("Permissao"=>array("foreignKey"=>"perfil_id"))));
 			if(!$registro = $this->Perfil->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$this->setTitle("Editar Perfil");
@@ -79,7 +79,7 @@ class PerfisController extends AppController{
 			$this->setTitle("Visualizar Perfil");
 			$this->Perfil->bindModel(array("hasMany"=>array("Permissao"=>array("foreignKey"=>"perfil_id"))));
 			if(!$registro = $this->Perfil->findById($id)){
-				throw new Exception("Registro #{$id} não encontrado");
+				throw new RegistroNaoEncontradoException($id);
 			}
 			
 			$permissoes = array() ;

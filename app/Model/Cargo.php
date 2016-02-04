@@ -35,7 +35,7 @@ class Cargo extends AppModel{
 	public function excluir($id){
 		
 		if(!$registro = $this->findById($id)){
-			throw new Exception("Registro #{$id} não encontrado");
+			throw new RegistroNaoEncontradoException($id);
 		}
 		
 		$Usuario = new Usuario();
