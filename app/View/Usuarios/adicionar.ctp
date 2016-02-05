@@ -25,9 +25,9 @@
 					echo $this->Form->input('Usuario.login', array('class' => 'input-xlarge'));
 					echo $this->Form->input('Usuario.senha', array('type' => 'password', 'class' => 'input-xlarge'));
 					echo $this->Form->input('Usuario.confirmacao_senha', array('type' => 'password', 'class' => 'input-xlarge'));
-					echo $this->Form->input('Pessoa.cpf', array('class' => 'input-xlarge'));
+					echo $this->Form->input('Pessoa.cpf', array('class' => 'input-xlarge cpf'));
 					echo $this->Form->input('Pessoa.rg', array('class' => 'input-xlarge'));
-					echo $this->Form->input('Usuario.observacao', array('class' => ' jqte-test'));
+					echo $this->Form->input('Usuario.observacao', array('label'=>'Observação','class' => 'texteditor'));
 					echo $this->Form->input('imagem_perfil', array('class'=>'input-xlarge', 'type' => 'file'));
 					echo $this->Form->input('diretorio_imagem_perfil', array('type' => 'hidden'));
 				?>
@@ -37,7 +37,7 @@
  				<?php 
  					echo $this->Form->input('Pessoa.logradouro',array('class' => 'input-xlarge'));
 					echo $this->Form->input('Pessoa.numero', array('class' => 'input-xlarge'));
-					echo $this->Form->input('Pessoa.cep', array('class' => 'input-xlarge'));
+					echo $this->Form->input('Pessoa.cep', array('class' => 'input-xlarge cep'));
 					echo $this->Form->input('Pessoa.bairro', array('class' => 'input-xlarge'));
 					echo $this->Form->input('Pessoa.cidade', array('class' => 'input-xlarge'));
 					echo $this->Form->input('Pessoa.uf', array('label' => 'UF','type' => 'select', 'options' => Util::getEstados()));
@@ -62,16 +62,3 @@
 		</div>
  	</form>
 </div>
-
-<script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="<?php echo $this->base?>/js/jquery-te-1.4.0.min.js"></script>
-<link type="text/css" rel="stylesheet" href="<?php echo $this->base?>/css/jquery-te-1.4.0.css">
-<script>
-	$('.jqte-test').jqte();
-	// settings of status
-	var jqteStatus = true;
-	$(".status").click(function(){
-		jqteStatus = jqteStatus ? false : true;
-		$('.jqte-test').jqte({"status" : jqteStatus})
-	});
-</script>

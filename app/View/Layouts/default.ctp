@@ -34,7 +34,8 @@
 					'gantt',
 					'core',
 					'font-awesome',
-					'main'
+					'main',
+					'jquery-te-1.4.0'
 				)
 			);
 			echo $this->fetch('css');
@@ -103,7 +104,7 @@
 								    	<li><?php echo $this->Html->link(__('Usuários'), array('controller' => 'usuarios','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Perfis'), array('controller' => 'perfis','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Cargos'), array('controller' => 'cargos','action' => 'index'));?></li>
-								      	<li><?php echo $this->Html->link(__('Vinculos'), array('controller' => 'vinculos','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Vínculos'), array('controller' => 'vinculos','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Setores'), array('controller' => 'setores','action' => 'index'));?></li>
 								      	<li><?php echo $this->Html->link(__('Departamentos'), array('controller' => 'departamentos','action' => 'index'));?></li>
 						    		</ul>
@@ -165,16 +166,30 @@
 				'libs/jquery.maskMoney',
 				'libs/bootstrap.min',
 				'libs/geral',
-				'libs/jquery.ui.datepicker'
+				'libs/jquery.ui.datepicker',
+				'jquery-te-1.4.0.min.js',
+				'libs/jquery.lwMultiSelect.min'
 			)
 		);
 		echo $this->fetch('script');
-		echo $this->Js->writeBuffer(); // note: write cached scripts 
+		echo $this->Js->writeBuffer(); // note: write cached scripts
 		?>
 		<script>
 			$(function() {
+				/* adicionando devidas máscaras às classes */
+				$(".telefone").mask("(99) 9999-9999?9");
+				$(".cep").mask("99999-999");
+				$(".data").mask("99/99/9999");
+				$(".competencia").mask("99/9999");
+				$(".datahora").mask("99/99/9999 99:99");
+				$(".hora").mask("99:99");
+				$(".cpf").mask("999.999.999-99");
+				$(".cnpj").mask("99.999.999/9999-99");
+				$(".texteditor").jqte();
+				jQuery(".money").maskMoney({symbol:"R$",decimal:",",thousands:"."});
+				$(".multi-select").lwMultiSelect();
 				$.datepicker.setDefaults( $.datepicker.regional[""] );
-				$(".datepicker").datepicker( $.datepicker.regional["pt-BR"] );
+				$(".data").datepicker( $.datepicker.regional["pt-BR"] );
 			});
 		</script>
 		<!-- end Scripts -->
