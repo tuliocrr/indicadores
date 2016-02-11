@@ -18,7 +18,7 @@
 				<?php echo $this->Form->input('Procedimento.titulo', array('label'=>'Título','class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
 			</div>
 			<div class="span12"> 
-				<?php echo $this->Form->input('Procedimento.usuario_id', array('label'=>'Usuário','class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
+				<?php echo $this->Form->input('Procedimento.usuario_id', array('label'=>'Usuário',"options" => $usuarios,'class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
 			</div>
 			<div class="span12"> 
 				<?php echo $this->Form->input('Procedimento.passo', array('label'=>'Passo a Passo','class'=>'texteditor', 'div'=>array('class'=>false)));?>
@@ -29,6 +29,10 @@
 			<div class="span12"> 
 				<?php echo $this->Form->input('Procedimento.requisito', array('label'=>'Requisitos','class'=>'texteditor', 'div'=>array('class'=>false)));?>
 			</div>
+			<div class="span12"> 
+				<?php echo $this->Form->input('Procedimento.certificado', array("options" => array(1=>"Sim", 0=> "Não"), 'type' => "radio",'label'=>'Procedimento Certificado?'));?>
+			</div>
+			
 		</div>
 		
 		

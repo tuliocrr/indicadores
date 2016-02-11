@@ -27,6 +27,7 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 				<tr>
 					<th><?php echo $this->Paginator->sort('titulo', 'Título'); ?></th>
 					<th><?php echo $this->Paginator->sort('usuario_id', 'Usuário'); ?></th>
+					<th><?php echo $this->Paginator->sort('certificado', 'Certificado'); ?></th>
 					<?php if($editar || $excluir){?>
 					<th class="text-center"><?php echo __('Ações'); ?></th>
 					<?php }?>
@@ -42,7 +43,9 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 						echo $linha['Procedimento']['titulo'];
 					}
 					?>&nbsp;</td>
-					<td><?php echo $linha["Procedimento"]["Usuario"]["titulo"]?></td>
+					
+					<td><?php echo($linha["Usuario"]["Pessoa"]["nome"])?></td>
+					<td><?php echo($linha["Procedimento"]["certificado"])?></td>
 					<?php if($editar || $excluir){?>
 					<td width="7%" nowrap="nowrap" class="text-center">
 						<?php 

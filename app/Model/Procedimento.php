@@ -10,6 +10,9 @@
  *
  */
 //App::uses("Objetivo", "Model");
+App::import('Model','Pessoa');
+App::import('Model','Usuario');
+
 class Procedimento extends AppModel{
 	
 	var $useTable = "procedimentos";
@@ -43,12 +46,7 @@ class Procedimento extends AppModel{
 		if(!$registro = $this->findById($id)){
 			throw new RegistroNaoEncontradoException($id);
 		}
-		/*
-		$Objetivo = new Objetivo();
-		if($usuarios = $Usuario->find("all", array("conditions"=>array("Objetivo.Dimensao_id"=>$id, "Objetivo.status"=>1)))){
-			throw new Exception("Este Dimensão não pode ser excluído pois existem usuários associados ao mesmo");
-		}
-		*/	
+
 		$this->id = $id;
 		if($this->saveField("status", 0)) 
 			return true;

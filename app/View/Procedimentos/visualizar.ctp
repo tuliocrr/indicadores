@@ -33,7 +33,7 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 					__("<i class='fa fa-trash'></i>Excluir"), 
 					array('action' => 'excluir', $registro['Procedimento']['id']), 
 					array('class'=>'btn btn-small btn-primary pull-right', 'escape' => false),
-					__("Deseja realmente excluir o registro?", $registro['Cargo']['id'])
+					__("Deseja realmente excluir o registro?", $registro['Procedimento']['id'])
 				);
 		}
 		?>
@@ -48,8 +48,24 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 						<td><?php echo h($registro['Procedimento']['titulo']); ?></td>
 					</tr>
 					<tr>
-						<td><strong><?php echo __('Descrição'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['Usuario']['titulo']); ?></td>
+						<td><strong><?php echo __('Requisitos'); ?></strong></td>
+						<td><?php echo h($registro['Procedimento']['requisito']); ?></td>
+					</tr>
+					<tr>
+						<td><strong><?php echo __('Passo a Passo'); ?></strong></td>
+						<td><?php echo h($registro['Procedimento']['passo']); ?></td>
+					</tr>
+					<tr>
+						<td><strong><?php echo __('Resultado Esperado'); ?></strong></td>
+						<td><?php echo h($registro['Procedimento']['resultado_esperado']); ?></td>
+					</tr>
+					<tr>
+						<td><strong><?php echo __('Certificado'); ?></strong></td>
+						<td><?php echo h($registro['Procedimento']['certificado']); ?></td>
+					</tr>
+					<tr>
+						<td><strong><?php echo __('Responsável'); ?></strong></td>
+						<td><?php echo h($registro['Usuario']['Pessoa']['nome']); ?></td>
 					</tr>
 				</tbody>				
 			</table>			

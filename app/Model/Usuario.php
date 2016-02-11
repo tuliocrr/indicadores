@@ -86,6 +86,22 @@ class Usuario extends AppModel {
 			),
 		)
 	);
+
+/**
+ * belongsTo associations
+ *
+ * @var array
+ */
+	public $belongsTo = array(
+		'Pessoa' => array(
+			'className' => 'Pessoa',
+			'foreignKey' => 'pessoa_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+	
 	
 	public function isUnicoLoginAtivo($data){
 		if($this->id){
@@ -173,7 +189,8 @@ class Usuario extends AppModel {
 		if($type == 'list'){
 			$options['fields'] = array('Usuario.id', 'Pessoa.nome');
 		}
-		$this->bindModel(array("belongsTo"=>array("Pessoa")));
+		
+		
 		return $this->find($type, $options);
 	}
 

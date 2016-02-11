@@ -11,17 +11,22 @@
  */
 class ProcedimentosController extends AppController{
 	
-	public $uses = array("Procedimento");
+	public $uses = array("Procedimento","Usuario");
 	
 	public function index(){
 	
 		try{
 			
 			$this->setTitle("Procedimentos");
+			$this->Procedimento->recursive = 2;
+			$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
+			
+			
+			
 			$this->paginate['conditions'] = $this->_conditions();
 			$this->paginate['order'] = array('Procedimento.titulo'=>'asc');
 			$this->set('lista', $this->paginate());
-			$this->set('options', array('Procedimento.titulo'=>'Título', 'Procedimento.usuario_id'=>'Usuário'));
+			$this->set('options', array('Procedimento.titulo'=>'Título', 'Pessoa.nome'=>'Usuário'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e);
@@ -30,10 +35,14 @@ class ProcedimentosController extends AppController{
 
 	public function adicionar(){
 		try{
+			
 			$this->setTitle("Adicionar Procedimentos");
+			$DS = $this->Procedimento->getDataSource();
+			$DS->begin();
+			
+			
 			if ($this->request->is('post')) {
-				$DS = $this->Procedimento->getDataSource();
-				$DS->begin();
+				
 				if($this->Procedimento->adicionar($this->request->data)){
 					$DS->commit();
 					$this->Session->setFlash("Registro adicionado com sucesso", "success");
@@ -41,6 +50,13 @@ class ProcedimentosController extends AppController{
 				}else{
 					$DS->rollback();
 				}
+			}else{
+				$this->Procedimento->recursive = 2;
+				$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
+				$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa")));
+				
+				$this->set('usuarios', $this->Usuario->listarAtivos('list'));
+				
 			}
 		}catch(Exception $e){
 			$this->trataExcecao($e, $DS);
@@ -78,6 +94,9 @@ class ProcedimentosController extends AppController{
 		try{
 			
 			$this->setTitle("Visualizar Procedimento");
+			$this->Procedimento->recursive = 2;
+			$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
+
 			if(!$registro = $this->Procedimento->findById($id)){
 				throw new RegistroNaoEncontradoException($id);
 			}
