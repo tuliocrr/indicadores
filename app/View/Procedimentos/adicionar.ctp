@@ -30,7 +30,7 @@
 				<?php echo $this->Form->input('Procedimento.requisito', array('label'=>'Requisitos','class'=>'texteditor', 'div'=>array('class'=>false)));?>
 			</div>
 			<div class="span12"> 
-				<?php echo $this->Form->input('Procedimento.certificado', array("options" => array(1=>"Sim", 0=> "Não"), 'type' => "radio",'label'=>'Procedimento Certificado?'));?>
+				<?php echo $this->Form->input('Procedimento.certificado', array("options" => array(1=>"Sim", 0=> "Não"), 'default'=>0,'type' => "radio",'label'=>'Procedimento Certificado?'));?>
 			</div>
 			
 		</div>

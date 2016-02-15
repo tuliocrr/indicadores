@@ -44,8 +44,8 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 					}
 					?>&nbsp;</td>
 					
-					<td><?php echo($linha["Usuario"]["Pessoa"]["nome"])?></td>
-					<td><?php echo($linha["Procedimento"]["certificado"])?></td>
+					<td><?php echo $linha["Usuario"]["Pessoa"]["nome"]?></td>
+					<td><?php echo ($linha["Procedimento"]["certificado"]) ? "Sim" : "Não";?></td>
 					<?php if($editar || $excluir){?>
 					<td width="7%" nowrap="nowrap" class="text-center">
 						<?php 

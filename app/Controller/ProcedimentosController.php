@@ -23,13 +23,13 @@ class ProcedimentosController extends AppController{
 			$this->Procedimento->recursive = 2;
 			
 			$this->paginate['conditions'] = $this->_conditions();
-			$this->paginate['contain'] = array('Usuario'=>array('Pessoa'));
 			$this->paginate['recursive'] = 2;
+			$this->paginate['joins'][] = array('type'=>'inner', 'alias'=>'PessoaJoin', 'table'=>'pessoas' ,'conditions'=>"Usuario.pessoa_id = PessoaJoin.id");
 			$this->paginate['order'] = array('Procedimento.titulo'=>'asc');
 			
-			$this->set('lista', $this->paginate('Procedimento')); 
+			$this->set('lista', $this->paginate()); 
 			
-			$this->set('options', array('Procedimento.titulo'=>'Título', 'Usuario.login'=>'Usuário', 'Pessoa.nome'=>'Pessoa'));
+			$this->set('options', array('Procedimento.titulo'=>'Título', 'PessoaJoin.nome'=>'Usuário'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e);
@@ -80,9 +80,11 @@ class ProcedimentosController extends AppController{
 				}else{
 					$DS->rollback();
 				}
+			}else{
+				$this->request->data = $registro;
 			}
 			
-			$this->request->data = $registro;
+			$this->set('usuarios', $this->Usuario->listarAtivos('list'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e, $DS);
@@ -95,6 +97,7 @@ class ProcedimentosController extends AppController{
 			$this->setTitle("Visualizar Procedimento");
 			$this->Procedimento->recursive = 2;
 			$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
+			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa")));
 
 			if(!$registro = $this->Procedimento->findById($id)){
 				throw new RegistroNaoEncontradoException($id);

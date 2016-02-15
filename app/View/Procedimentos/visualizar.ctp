@@ -45,27 +45,27 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 				<tbody>
 					<tr>
 						<td><strong><?php echo __('Procedimento'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['titulo']); ?></td>
+						<td><?php echo $registro['Procedimento']['titulo']; ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Requisitos'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['requisito']); ?></td>
+						<td><?php echo $registro['Procedimento']['requisito']; ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Passo a Passo'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['passo']); ?></td>
+						<td><?php echo $registro['Procedimento']['passo']; ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Resultado Esperado'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['resultado_esperado']); ?></td>
+						<td><?php echo $registro['Procedimento']['resultado_esperado']; ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Certificado'); ?></strong></td>
-						<td><?php echo h($registro['Procedimento']['certificado']); ?></td>
+						<td><?php echo ($registro['Procedimento']['certificado']) ? "Sim" : "Não"; ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Responsável'); ?></strong></td>
-						<td><?php echo h($registro['Usuario']['Pessoa']['nome']); ?></td>
+						<td><?php echo $registro['Usuario']['Pessoa']['nome']; ?></td>
 					</tr>
 				</tbody>				
 			</table>			
