@@ -34,9 +34,9 @@
 			<header id="header" class="clearfix">
 		    	<div id="header-content" class="container clearfix">
 		    		<span class="header-logo">
-		    			<a href="<?php echo $this->base;?>/" class="header-logo-a" title="Civis Fichas Técnicas">
-		    				<img src="<?php echo $this->base;?>/img/logo-civis-empresa.png" alt="Civis Fichas Técnicas">
-		    				<span class="visuallyhidden">Civis Fichas Técnicas</span>
+		    			<a href="<?php echo $this->base;?>/" class="header-logo-a" title="Civis Estratégia">
+		    				<img src="<?php echo $this->base;?>/img/logo-civis-estrategia.png" alt="Civis Estratégia">
+		    				<span class="visuallyhidden">Civis Estratégia</span>
 		    			</a>
 		    		</span>
 		        </div><!-- fim #header-conteudo -->

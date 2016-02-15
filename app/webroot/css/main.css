@@ -1,10 +1,10 @@
 /*
- * Copyright [2014] -  Civis Gestï¿½o Inteligente
- * Este arquivo ï¿½ parte do programa Civis Estratï¿½gia
- * O civis estratï¿½gia ï¿½ um software livre, vocï¿½ pode redistribuï¿½-lo e/ou modificï¿½-lo dentro dos termos da Licenï¿½a Pï¿½blica Geral GNU como publicada pela Fundaï¿½ï¿½o do Software Livre (FSF) na versï¿½o 2 da Licenï¿½a.
- * Este programa ï¿½ distribuï¿½do na esperanï¿½a que possa ser  ï¿½til, mas SEM NENHUMA GARANTIA, sem uma garantia implï¿½cita de ADEQUAï¿½ï¿½O a qualquer  MERCADO ou APLICAï¿½ï¿½O EM PARTICULAR. Veja a Licenï¿½a Pï¿½blica Geral GNU/GPL em portuguï¿½s para maiores detalhes.
- * Vocï¿½ deve ter recebido uma cï¿½pia da Licenï¿½a Pï¿½blica Geral GNU, sob o tï¿½tulo "licenï¿½a GPL.odt", junto com este programa. Se nï¿½o encontrar,
- * Acesse o Portal do Software Pï¿½blico Brasileiro no endereï¿½o www.softwarepublico.gov.br ou escreva para a Fundaï¿½ï¿½o do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
+ * Copyright [2014] -  Civis Gest‹o Inteligente
+ * Este arquivo Ž parte do programa Civis EstratŽgia
+ * O civis estratŽgia Ž um software livre, voc pode redistribu’-lo e/ou modific‡-lo dentro dos termos da Licena Pœblica Geral GNU como publicada pela Funda‹o do Software Livre (FSF) na vers‹o 2 da Licena.
+ * Este programa Ž distribu’do na esperana que possa ser  œtil, mas SEM NENHUMA GARANTIA, sem uma garantia impl’cita de ADEQUA‚ÌO a qualquer  MERCADO ou APLICA‚ÌO EM PARTICULAR. Veja a Licena Pœblica Geral GNU/GPL em portugus para maiores detalhes.
+ * Voc deve ter recebido uma c—pia da Licena Pœblica Geral GNU, sob o t’tulo "licena GPL.odt", junto com este programa. Se n‹o encontrar,
+ * Acesse o Portal do Software Pœblico Brasileiro no endereo www.softwarepublico.gov.br ou escreva para a Funda‹o do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
  * HTML5 Boilerplate
  *
  *
@@ -440,12 +440,12 @@ input[type=submit]:active,
 .div-botao-destaque input,
 .btn-primary {
   color: #fff;
-  border-color: #00affc;
-  background: #00affc;
+  border-color: #24a41d;
+  background: #24a41d;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
-  -webkit-box-shadow: 0 2px 0 #118fe6;
-  -moz-box-shadow: 0 2px 0 #118fe6;
-  box-shadow: 0 2px 0 #118fe6;
+  -webkit-box-shadow: 0 2px 0 #1a7915;
+  -moz-box-shadow: 0 2px 0 #1a7915;
+  box-shadow: 0 2px 0 #1a7915;
 }
 .botao-destaque:hover,
 .div-botao-destaque input:hover,
@@ -454,12 +454,12 @@ input[type=submit]:active,
 .div-botao-destaque input:focus,
 .btn-primary:focus {
   color: #fff;
-  background: #00affc;
+  background: #29ba21;
 }
 .botao-destaque:active,
 .div-botao-destaque input:active,
 .btn-primary:active {
-  background: #2370d2;
+  background: #1f8e19;
   text-shadow: 0 1px 0 #931108;
 }
 .botao-destaque > .fa,
@@ -471,14 +471,14 @@ input[type=submit]:active,
 .botao-destaque-2,
 .bloco-cadastro-conteudo input[type=submit] {
   color: #fff;
-  border-color: #164a8e;
+  border-color: #129d53;
   font-size: 14px;
-  text-shadow: 1px 1px 0 #091d3b;
-  background: #144384;
+  text-shadow: 1px 1px 0 #0a4b29;
+  background: #0f944d;
 }
 .botao-destaque-2:hover,
 .bloco-cadastro-conteudo input[type=submit]:hover {
-  background: #1a5eb6;
+  background: #36a755;
 }
 .botao,
 input[type=button],
@@ -509,13 +509,13 @@ h4 {
   text-shadow: 0 1px 1px #fff;
 }
 .cor-destaque {
-  color: #268ee8;
+  color: #13aa50;
 }
 .cor-destaque-secundario {
   color: #808184;
 }
 .dropdown-menu > li > a:hover {
-  background: #337ece;
+  background: #13aa50;
 }
 /* ==========================================================================
    TOPO 
@@ -899,7 +899,7 @@ h4 {
   line-height: 1.1em;
 }
 /*
- * Mapa Estratï¿½gico
+ * Mapa Estratégico
  */
 #mapa-estrategico .input-mini {
   width: 40px;
@@ -976,7 +976,7 @@ h4 {
   border-color: #EEB422;
   border: 1px solid #EE0000;
 }
-/* end Mapa Estratï¿½gico */
+/* end Mapa EstratŽgico */
 .box .box-title {
   padding: 10px 20px;
   background: #eee;
@@ -1025,7 +1025,7 @@ h4 {
 .titulo-secao,
 .container > h4 {
   font-size: 22px;
-  color: #268ee8;
+  color: #13aa50;
 }
 .header-padrao {
   border-bottom: 1px solid #ddd;

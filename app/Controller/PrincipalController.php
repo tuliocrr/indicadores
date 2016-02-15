@@ -1,14 +1,7 @@
 <?php
 class PrincipalController extends AppController{
 	
-	public $uses = array("Produto","TipoProduto");
-	
 	public function index(){
-			if(!$produtos = $this->Produto->find("all")){
-				throw new RegistroNaoEncontradoException('');
-			}
-			
-			$this->set("produtos", $produtos);
 		
 	}
 	
