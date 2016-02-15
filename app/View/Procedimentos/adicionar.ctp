@@ -18,7 +18,7 @@
 				<?php echo $this->Form->input('Procedimento.titulo', array('label'=>'Título','class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
 			</div>
 			<div class="span12"> 
-				<?php echo $this->Form->input('Procedimento.usuario_id', array('label'=>'Usuário',"options" => $usuarios,'class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
+				<?php echo $this->Form->input('Procedimento.usuario_id', array('label'=>'Usuário',"options"=>$usuarios,'class'=>'input-xlarge','empty'=>'Selecione o usuário','div'=>array('class'=>false)));?>
 			</div>
 			<div class="span12"> 
 				<?php echo $this->Form->input('Procedimento.passo', array('label'=>'Passo a Passo','class'=>'texteditor', 'div'=>array('class'=>false)));?>

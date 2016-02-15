@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Copyright [2014] -  Civis Gestão Inteligente
+ * Copyright [2016] -  Civis Gestão Inteligente
  * Este arquivo é parte do programa Civis Estratégia
  * O civis estratégia é um software livre, você pode redistribuí-lo e/ou modificá-lo dentro dos termos da Licença Pública Geral GNU como publicada pela Fundação do Software Livre (FSF) na versão 2 da Licença.
  * Este programa é distribuído na esperança que possa ser  útil, mas SEM NENHUMA GARANTIA, sem uma garantia implícita de ADEQUAÇÃO a qualquer  MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a Licença Pública Geral GNU/GPL em português para maiores detalhes.
@@ -86,23 +86,7 @@ class Usuario extends AppModel {
 			),
 		)
 	);
-
-/**
- * belongsTo associations
- *
- * @var array
- */
-	public $belongsTo = array(
-		'Pessoa' => array(
-			'className' => 'Pessoa',
-			'foreignKey' => 'pessoa_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		)
-	);
-	
-	
+		
 	public function isUnicoLoginAtivo($data){
 		if($this->id){
 			$conditions["Usuario.id != "] = $this->id;
@@ -186,11 +170,11 @@ class Usuario extends AppModel {
 	
 	public function listarAtivos($type = 'all'){
 		$options['order'] = 'Pessoa.nome';
+		$options['recursive'] = 1;
 		if($type == 'list'){
 			$options['fields'] = array('Usuario.id', 'Pessoa.nome');
 		}
-		
-		
+		$this->bindModel(array('belongsTo'=>array('Pessoa')));
 		return $this->find($type, $options);
 	}
 

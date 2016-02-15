@@ -11,7 +11,7 @@
  */
 class ProcedimentosController extends AppController{
 	
-	public $uses = array("Procedimento","Usuario");
+	public $uses = array("Procedimento","Usuario","Pessoa");
 	
 	public function index(){
 	
@@ -37,11 +37,11 @@ class ProcedimentosController extends AppController{
 		try{
 			
 			$this->setTitle("Adicionar Procedimentos");
-			$DS = $this->Procedimento->getDataSource();
-			$DS->begin();
-			
 			
 			if ($this->request->is('post')) {
+				
+				$DS = $this->Procedimento->getDataSource();
+				$DS->begin();
 				
 				if($this->Procedimento->adicionar($this->request->data)){
 					$DS->commit();
@@ -50,16 +50,12 @@ class ProcedimentosController extends AppController{
 				}else{
 					$DS->rollback();
 				}
-			}else{
-				$this->Procedimento->recursive = 2;
-				$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
-				$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa")));
-				
-				$this->set('usuarios', $this->Usuario->listarAtivos('list'));
-				
 			}
+			
+			$this->set('usuarios', $this->Usuario->listarAtivos('list'));
+			
 		}catch(Exception $e){
-			$this->trataExcecao($e, $DS);
+			$this->trataExcecao($e, @$DS);
 		}
 	}
 
