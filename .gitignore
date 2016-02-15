@@ -4,5 +4,3 @@
 /app/tmp*
 
 app/Config/database.php
-
-.project
