@@ -39,6 +39,11 @@
 				)
 			);
 			echo $this->fetch('css');
+				echo $this->Html->script(array('libs/jquery',
+			  						   'libs/footable',
+			  						   'libs/jquery-ui.min',
+			  						   'plugins/treetable/javascripts/src/jquery.treetable.js'));
+			
 		?>
 	</head>
 	<body>
@@ -46,9 +51,9 @@
 			<header id="header" class="clearfix">
 		    	<div id="header-content" class="container clearfix">
 		    		<span class="header-logo">
-		    			<a href="<?php echo $this->base;?>" class="header-logo-a" title="Civis Estratégia">
-		    				<img src="<?php echo $this->base;?>/img/logo-civis-estrategia.png" alt="Civis Estratégia">
-		    				<span class="visuallyhidden">Civis Estratégia</span>
+		    			<a href="<?php echo $this->base;?>" class="header-logo-a" title="Civis Fichas Técnicas">
+		    				<img src="<?php echo $this->base;?>/img/logo-civis-empresa.png" alt="Civis Fichas Técnicas">
+		    				<span class="visuallyhidden">Civis Fichas Técnicas</span>
 		    			</a>
 		    		</span>
 		    		<div class="topo-usuario clearfix">
@@ -86,19 +91,23 @@
 				            		<a href="<?php echo $this->base;?>">Home</a>
 				          		</li>
 				          		<li class="dropdown">
-					          		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-						          		Comunicação<b class="caret"></b>
-							  		</a>
-								  	<ul class="dropdown-menu">
-										<li><?php echo $this->Html->link(__('Reuniões'), array('controller' => 'reunioes','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Tarefas'), array('controller' => 'tarefas','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Marcadores'), array('controller' => 'marcadores','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Procedimentos'), array('controller' => 'procedimentos','action' => 'index'));?></li>
-								  	</ul>
+					          		<?php echo $this->Html->link(__('Produtos/Matéria Prima'), array('controller' => 'produtos','action' => 'index'));?>
 				          		</li>
-						  		<li class="dropdown">
+				          		<li class="dropdown">				            		
+				            			<?php echo $this->Html->link(__('Fichas Técnicas'), array('controller' => 'fichas','action' => 'index'));?>						    		
+				          		</li>
+				          		<li class="dropdown">
 				            		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				            		Cadastros<b class="caret"></b>
+				            		Relatórios e Gráficos<b class="caret"></b>
+						    		</a>
+						    		<ul class="dropdown-menu">
+								    	<li><?php echo $this->Html->link(__('Cardápio'), array('controller' => 'usuarios','action' => 'index'));?></li>
+								      	<li><?php echo $this->Html->link(__('Relatório de Produtos'), array('controller' => 'perfis','action' => 'index'));?></li>
+						    		</ul>
+				          		</li>
+				          		<li class="dropdown">
+				            		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+				            		Administração<b class="caret"></b>
 						    		</a>
 						    		<ul class="dropdown-menu">
 								    	<li><?php echo $this->Html->link(__('Usuários'), array('controller' => 'usuarios','action' => 'index'));?></li>
@@ -109,33 +118,7 @@
 								      	<li><?php echo $this->Html->link(__('Departamentos'), array('controller' => 'departamentos','action' => 'index'));?></li>
 						    		</ul>
 				          		</li>
-				          		<li class="dropdown">
-				            		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				            			Gestão Estratégica<b class="caret"></b>
-						    		</a>
-						    		<ul class="dropdown-menu">
-						     			<li><?php echo $this->Html->link(__('Dimensões'), array('controller' => 'dimensoes','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Objetivos'), array('controller' => 'objetivos','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Indicadores'), array('controller' => 'indicadores','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Ações Estratégicas'), array('controller' => 'acoes-estrategicas','action' => 'index'));?></li>
-							  			<li><?php echo $this->Html->link(__('Revisão das Ações'), array('controller' => 'acoes-estrategicas','action' => 'indice_revisao'));?></li>
-							  			<li><?php echo $this->Html->link(__('Painel Geral de Ações'), array('controller' => 'acoes-estrategicas','action' => 'painel_acoes'));?></li>
-						      			<li><?php echo $this->Html->link(__('Atividades'), array('controller' => 'atividades','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Faixas'), array('controller' => 'faixas','action' => 'index'));?></li>
-						      			<li><?php echo $this->Html->link(__('Anomalias'), array('controller' => 'anomalias','action' => 'index'));?></li>
-						    		</ul>
-				          		</li>
-								<li class="dropdown">
-				            		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-				            			Gestão de Portfólio<b class="caret"></b>
-						    		</a>			
-						    		<ul class="dropdown-menu">
-										<li><?php echo $this->Html->link(__('Projetos'), array('controller' => 'projetos','action' => 'index'));?></li>
-										<li><?php echo $this->Html->link(__('Programas'), array('controller' => 'programas','action' => 'index'));?></li>
-									</ul>
-						  		</li>
-								<li><?php echo $this->Html->link(__('Mapa estratégico'), array('controller' => 'mapa-estrategico','action' => 'index'));?></li>
-				          		<li><?php echo $this->Html->link(__('Organograma'), array('controller' => 'organograma','action' => 'index'));?></li>
+				          		
 				        	</ul>
 						</div>
 					</div>
@@ -186,7 +169,7 @@
 				$(".cpf").mask("999.999.999-99");
 				$(".cnpj").mask("99.999.999/9999-99");
 				$(".texteditor").jqte();
-				jQuery(".money").maskMoney({symbol:"R$",decimal:",",thousands:"."});
+				jQuery(".money").maskMoney({symbol:"",decimal:",",thousands:"."});				
 				$(".multi-select").lwMultiSelect();
 				$.datepicker.setDefaults( $.datepicker.regional[""] );
 				$(".data").datepicker( $.datepicker.regional["pt-BR"] );
