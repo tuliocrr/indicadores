@@ -64,7 +64,7 @@ class ProdutosController extends AppController{
 		}catch(Exception $e){
 			$this->trataExcecao($e, $DS);
 		}
-	}
+	}  
 	
 	public function visualizar($id){
 		try{
