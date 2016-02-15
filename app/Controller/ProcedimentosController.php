@@ -14,19 +14,22 @@ class ProcedimentosController extends AppController{
 	public $uses = array("Procedimento","Usuario","Pessoa");
 	
 	public function index(){
-	
 		try{
 			
 			$this->setTitle("Procedimentos");
-			$this->Procedimento->recursive = 2;
+			//unset($_SESSION["Search"]);
 			$this->Procedimento->bindModel(array("belongsTo"=>array("Usuario")));
-			
-			
+			$this->Usuario->bindModel(array("belongsTo"=>array("Pessoa")));
+			$this->Procedimento->recursive = 2;
 			
 			$this->paginate['conditions'] = $this->_conditions();
+			$this->paginate['contain'] = array('Usuario'=>array('Pessoa'));
+			$this->paginate['recursive'] = 2;
 			$this->paginate['order'] = array('Procedimento.titulo'=>'asc');
-			$this->set('lista', $this->paginate());
-			$this->set('options', array('Procedimento.titulo'=>'Título', 'Pessoa.nome'=>'Usuário'));
+			
+			$this->set('lista', $this->paginate('Procedimento')); 
+			
+			$this->set('options', array('Procedimento.titulo'=>'Título', 'Usuario.login'=>'Usuário', 'Pessoa.nome'=>'Pessoa'));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e);
