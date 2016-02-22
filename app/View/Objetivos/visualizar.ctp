@@ -23,7 +23,7 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 		if($editar){
 		echo $this->Html->link(
 					__("<i class='fa fa-edit'></i>Editar"),
-					array('action' => 'editar', $registro['Dimensao']['id']),
+					array('action' => 'editar', $registro['Objetivo']['id']),
 					array('class'=>'btn btn-small btn-primary pull-right', 'escape' => false)
 				);
 		echo "&nbsp;&nbsp;";
@@ -31,9 +31,9 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 		if($excluir){
 			echo $this->Form->postLink(
 					__("<i class='fa fa-trash'></i>Excluir"), 
-					array('action' => 'excluir', $registro['Dimensao']['id']), 
+					array('action' => 'excluir', $registro['Objetivo']['id']), 
 					array('class'=>'btn btn-small btn-primary pull-right', 'escape' => false),
-					__("Deseja realmente excluir o registro?", $registro['Dimensao']['id'])
+					__("Deseja realmente excluir o registro?", $registro['Objetivo']['id'])
 				);
 		}
 		?>
@@ -45,11 +45,11 @@ $excluir = $this->ControleDeAcesso->validaAcessoElemento('excluir');
 				<tbody>
 					<tr>
 						<td><strong><?php echo __('Título'); ?></strong></td>
-						<td><?php echo h($registro['Dimensao']['titulo']); ?></td>
+						<td><?php echo h($registro['Objetivo']['titulo']); ?></td>
 					</tr>
 					<tr>
 						<td><strong><?php echo __('Descrição'); ?></strong></td>
-						<td><?php echo h($registro['Dimensao']['descricao']); ?></td>
+						<td><?php echo h($registro['Objetivo']['descricao']); ?></td>
 					</tr>
 				</tbody>				
 			</table>			

@@ -19,12 +19,15 @@
  		<div class="row">
  			<div class="span12"> 
 				<?php
-					echo $this->Form->input('Dimensao.id');
-					echo $this->Form->input('Dimensao.titulo', array('label'=>'Título','class'=>'input-xlarge', 'div'=>array('class'=>false)));
+					echo $this->Form->input('Objetivo.id');
+					echo $this->Form->input('Objetivo.titulo', array('label'=>'Título','class'=>'input-xlarge', 'div'=>array('class'=>false)));
 				?>
 			</div>
 			<div class="span12"> 
-				<?php echo $this->Form->input('Dimensao.descricao', array('label'=>'Descrição','class'=>'input-xlarge', 'div'=>array('class'=>false)));?>
+				<?php echo $this->Form->input('Objetivo.objetivo_id', array("options" => $objetivos, 'empty' => "Selecione o objetivo")); ?>
+			</div>
+			<div class="span12"> 
+				<?php echo $this->Form->input('Objetivo.usuario_id', array("options" => $usuarios, 'empty' => "Selecione o responsável")); ?>
 			</div>
  		</div>
  		
