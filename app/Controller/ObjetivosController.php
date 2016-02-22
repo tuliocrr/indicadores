@@ -9,9 +9,12 @@
  * Acesse o Portal do Software Público Brasileiro no endereço www.softwarepublico.gov.br ou escreva para a Fundação do Software Livre(FSF) Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA 
  *
  */
+ 
+App::uses('Util', 'Lib');
+
 class ObjetivosController extends AppController{
 	
-	public $uses = array("Objetivo","Usuario");
+	public $uses = array("Objetivo","Usuario","Dimensao");
 	
 	public function index(){
 	
@@ -52,6 +55,8 @@ class ObjetivosController extends AppController{
 			}
 			$this->set('objetivos', $this->Objetivo->listarAtivos('list'));
 			$this->set('usuarios', $this->Usuario->listarAtivos('list'));
+			$this->set('dimensoes', $this->Dimensao->listarAtivos('list'));
+			$this->set('anos', Util::retornaAnos(date("Y")+5, date("Y")-5));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e, $DS);
@@ -81,6 +86,8 @@ class ObjetivosController extends AppController{
 			$this->request->data = $registro;
 			$this->set('objetivos', $this->Objetivo->listarAtivos('list'));
 			$this->set('usuarios', $this->Usuario->listarAtivos('list'));
+			$this->set('dimensoes', $this->Dimensao->listarAtivos('list'));
+			$this->set('anos', Util::retornaAnos(date("Y")+5, date("Y")-5));
 			
 		}catch(Exception $e){
 			$this->trataExcecao($e, $DS);

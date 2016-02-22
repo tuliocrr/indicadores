@@ -378,6 +378,17 @@ class Util{
 			return '<img src="'.BASE.'/img/laranja.gif" /> ';
 		}
 	}
-
+	/**
+	 * Método que retorna a quantidade de anos definidos pelo intervalo do usuário
+	 * @param integer $ano1
+	 * @param integer $ano2
+	 * @return array
+	 */
+	public static function retornaAnos($ano1, $ano2){
+		for($x=$ano1;$x!=$ano2;$x--){
+			$anos[$x]=$x;
+		}
+		return $anos;
+	}
 }
 ?>

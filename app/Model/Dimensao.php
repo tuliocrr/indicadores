@@ -55,5 +55,18 @@ class Dimensao extends AppModel{
 		return false;
 		
 	}
+	/**
+	 * Método que retorna as dimensões ativas
+	 * @param string $type
+	 * @return array
+	 */	
+	
+	public function listarAtivos($type = 'all'){
+		$options['order'] = 'Dimensao.titulo';
+		if($type == 'list'){
+			$options['fields'] = array('Dimensao.id', 'Dimensao.titulo');
+		}
+		return $this->find($type, $options);
+	}
 
 }

@@ -20,7 +20,12 @@ class Objetivo extends AppModel{
 				"message"=>"Campo obrigatório"
 			)
 		),
-		"responsavel_id"=>array(
+		"usuario_id"=>array(
+			"Obrigatório"=>array(
+				"rule"=>"notEmpty",
+				"message"=>"Campo obrigatório"
+			)
+		),"dimensao_id"=>array(
 			"Obrigatório"=>array(
 				"rule"=>"notEmpty",
 				"message"=>"Campo obrigatório"

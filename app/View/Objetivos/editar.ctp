@@ -24,12 +24,26 @@
 				?>
 			</div>
 			<div class="span12"> 
-				<?php echo $this->Form->input('Objetivo.objetivo_id', array("options" => $objetivos, 'empty' => "Selecione o objetivo")); ?>
+				<?php echo $this->Form->input('Objetivo.objetivo_id', array('label'=>'Sub-item de:',"options" => $objetivos, 'empty' => "Selecione o objetivo")); ?>
+			</div>
+			<div class="span12"> 
+				<?php echo $this->Form->input('Objetivo.dimensao_id', array("options" => $dimensoes, 'empty' => "Selecione o responsável")); ?>
 			</div>
 			<div class="span12"> 
 				<?php echo $this->Form->input('Objetivo.usuario_id', array("options" => $usuarios, 'empty' => "Selecione o responsável")); ?>
 			</div>
- 		</div>
+			<div class="span12"> 
+				<?php 
+				echo $this->Form->input('Objetivo.ano', array('label' => 'Anos',
+						'class'=>'input-xlarge multi-select',
+						'type' => 'select',
+						'multiple' => 'multiple',
+						'options' => $anos,
+						'div' => array(
+						'class' => 'input label-block'
+					)));
+				?>
+			</div>		 		</div>
  		
 		 <div class="row">
 		 	<div class="span12">
